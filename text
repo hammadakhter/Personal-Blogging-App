@@ -6,3 +6,105 @@ function blogpost(){
     console.log(`${textarea} Submit`);
 
 }
+
+
+
+<section>
+      <div id="items">
+              <h2>My Blogs</h2>   
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">S: No</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Blog</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablebody">
+                    <!-- <tr>
+                      <th scope="row">1</th>
+                      <td>Get Some Coffe </td>
+                      <td>if you are doing coding you need to relax you mind</td>
+                      <td> <button type="button" class="btn btn-primary">Delete</button></td>
+                    </tr> -->
+                  </tbody>
+                </table>
+          </div>
+
+
+  </section>
+
+
+
+
+if(localStorage.getItem('itemsJson')== null){
+    itemsJsonArray = [];
+    itemsJsonArray.push([tit, desc])
+    localStorage.setItem('itemsJson', JSON.stringify(itemsJsonArray))
+}
+else{
+    itemsJsonArraystr = localStorage.getItem('itemsJson');
+    itemsJsonArray = JSON.parse(itemsJsonArraystr);
+    itemsJsonArray.push([tit, desc]);
+    localStorage.setItem('itemsJson', JSON.stringify(itemsJsonArray))
+}
+
+let tablebody = document.getElementById('tablebody')
+let str = "";
+itemsJsonArray.forEach((element, index) => {
+    str += `
+    <tr>
+    <th scope="row">${index + 1}</th>
+    <td>${element[0]}</td>
+    <td>${element[1]}</td>
+    <td> <button type="button" class="btn btn-primary" onclick="deleted(${index})">Delete</button></td>
+    </tr>
+    `
+});
+tablebody.innerHTML = str;
+
+function deleted(items){
+    console.log("delete", item)
+}
+
+
+
+function clearstorage(){
+localStorage.clear();
+}
+
+
+
+
+
+<span class="blog-poster-name">hammad akhter -</span>
+<span class="blog-post-date">8/August/2023</span>
+
+
+
+
+
+
+
+
+<h2 id="my-blog-heading">My Blogs</h2>
+
+<div class="post-container">
+  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" id="avatar" alt="">
+
+
+  <h5 class="blog-title">
+    An Action Button Could Be Coming To The Iphone 15 
+    <br/>
+ 
+
+  </h5>
+
+  <p class="blog-paragraph">
+    Apple could be putting an Action button on your next iPhone. According to a July report from MacRumors, code in the fourth iOS 17 developer beta hints at functionality for an Action button on the next-gen iPhone 15 Pro and Pro Max models.
+    Apple introduced the Action button on the Apple Watch Ultra. It's a physical button on the side of the Apple Watch Ultra that allows you to run a preselected function or program when you press it without unlocking your device or navigating to an app. Some of the preselected functions include starting a stopwatch, beginning a workout and turning on your flashlight.
+    The report said the Action button on the iPhone 15 Pro and Pro Max could replace the Ring/Silent switch on the side of the iPhone. The iPhone 15 Action button could have nine different functions. What each function would do is unclear, but the names of some of the functions, such as Camera and Flashlight, indicate the Action button would likely be able to turn these features on and off.
+   
+  </p>
+</div>
